@@ -1,33 +1,31 @@
 group 'com.example.imagegallerysaver'
 version '1.0-SNAPSHOT'
+
 buildscript {
     ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+
 rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
     }
 }
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
-    namespace "com.example.imagegallerysaver"
-    
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -38,13 +36,6 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
-    }
-}
-
-// Make sure this is outside the android block
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 
